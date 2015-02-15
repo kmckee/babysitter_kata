@@ -1,5 +1,5 @@
 Given(/^the child's bedtime is (.*)$/) do |bedtime|
-  pending # express the regexp above with the code you wish you had
+  @calculator.set_bedtime(bedtime)
 end
 
 Given(/^the rate before bedtime is \$(.*) per hour$/) do |rate|
