@@ -1,5 +1,5 @@
 Given(/^the child's bedtime is (.*)$/) do |bedtime|
-  @calculator.set_bedtime(bedtime)
+  @calculator.bedtime = bedtime
 end
 
 Given(/^the rate before bedtime is \$(.*) per hour$/) do |rate|
