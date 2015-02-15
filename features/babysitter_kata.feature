@@ -10,6 +10,7 @@ Feature: Babysitter Kata
   Background:
     Given the child's bedtime is 9:00pm
 
+    @focus
   Scenario: One hour at the standard rate 
     Given the rate before bedtime is $12.00 per hour
     When I babysit from 5:00pm to 6:00pm
