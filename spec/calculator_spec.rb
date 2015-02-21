@@ -12,4 +12,12 @@ describe Calculator do
     subject.rate_before_bedtime = rate
     expect(subject.rate_before_bedtime).to eql rate
   end
+  it 'can calculator a total for 1 hour before bedtime' do
+    hourly_rate = 12
+    subject.rate_before_bedtime = hourly_rate
+    arbitrary_start_time = Time.parse('5:00pm')
+    arbitrary_end_time = Time.parse('6:00pm')
+    total = subject.get_cost_for(arbitrary_start_time, arbitrary_end_time)
+    expect(total).to eql (hourly_rate * 1)
+  end
 end

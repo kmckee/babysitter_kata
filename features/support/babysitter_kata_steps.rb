@@ -1,3 +1,7 @@
+Given(/^I am calculating my nightly babysitting charge$/) do
+  @calculator = Calculator.new
+end
+
 Given(/^the child's bedtime is (.*)$/) do |bedtime|
   @calculator.bedtime = bedtime
 end

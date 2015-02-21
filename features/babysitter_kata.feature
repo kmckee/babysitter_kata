@@ -8,7 +8,8 @@ Feature: Babysitter Kata
    - leaves no later than 4:00AM
 
   Background:
-    Given the child's bedtime is 9:00pm
+    Given I am calculating my nightly babysitting charge
+    And the child's bedtime is 9:00pm
 
     @focus
   Scenario: One hour at the standard rate 
