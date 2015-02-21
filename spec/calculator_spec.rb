@@ -25,4 +25,9 @@ describe Calculator do
     total = subject.get_cost_for(five_pm, seven_pm)
     expect(total).to eql (12.0 * 2)
   end
+  it 'respects different rates' do
+    subject.rate_before_bedtime = 18
+    total = subject.get_cost_for(five_pm, six_pm)
+    expect(total).to eql (18.0 * 1)
+  end
 end
