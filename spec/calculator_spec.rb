@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Calculator do
   let(:five_pm) { Time.parse('5:00pm') }
   let(:six_pm) { Time.parse('6:00pm') }
+  let(:seven_pm) { Time.parse('7:00pm') }
   subject { Calculator.new }
   it 'knows the bedtime' do
     time = Time.now
@@ -17,6 +18,11 @@ describe Calculator do
   it 'can calculate a total for 1 hour before bedtime' do
     subject.rate_before_bedtime = 12
     total = subject.get_cost_for(five_pm, six_pm)
-    expect(total).to eql (12 * 1)
+    expect(total).to eql (12.0 * 1)
+  end
+  it 'can calculate a total for 2 hours before bedtime' do
+    subject.rate_before_bedtime = 12
+    total = subject.get_cost_for(five_pm, seven_pm)
+    expect(total).to eql (12.0 * 2)
   end
 end
