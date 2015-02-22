@@ -1,7 +1,7 @@
 class Calculator
   attr_accessor :bedtime, :rate_before_bedtime
-  def initialize
-    @hours_calculator = HoursWorkedCalculator.new
+  def initialize(hours_calculator = nil)
+    @hours_calculator = hours_calculator || HoursWorkedCalculator.new
   end
 
   def get_cost_for(start_time, end_time)

@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Calculator do
-  let(:five_pm) { Time.parse('5:00pm') }
-  let(:six_pm) { Time.parse('6:00pm') }
-  let(:seven_pm) { Time.parse('7:00pm') }
-  subject { Calculator.new }
+  let(:arbitrary_time) { '5:00pm'.to_t }
+  let(:hours_mock) { double('hours_mock') }
+  
+  subject { Calculator.new(hours_mock) }
+  
   it 'knows the bedtime' do
     time = Time.now
     subject.bedtime = time
@@ -16,18 +17,21 @@ describe Calculator do
     expect(subject.rate_before_bedtime).to eql rate
   end
   it 'can calculate a total for 1 hour before bedtime' do
+    allow(hours_mock).to receive(:hours_between).and_return(1)
     subject.rate_before_bedtime = BigDecimal.new('12.00')
-    total = subject.get_cost_for(five_pm, six_pm)
+    total = subject.get_cost_for(arbitrary_time, arbitrary_time)
     expect(total).to eql (12 * 1)
   end
   it 'can calculate a total for 2 hours before bedtime' do
+    allow(hours_mock).to receive(:hours_between).and_return(2)
     subject.rate_before_bedtime = BigDecimal.new('12.00')
-    total = subject.get_cost_for(five_pm, seven_pm)
+    total = subject.get_cost_for(arbitrary_time, arbitrary_time)
     expect(total).to eql (12 * 2)
   end
   it 'respects different rates' do
+    allow(hours_mock).to receive(:hours_between).and_return(1)
     subject.rate_before_bedtime = BigDecimal.new('18.00')
-    total = subject.get_cost_for(five_pm, six_pm)
+    total = subject.get_cost_for(arbitrary_time, arbitrary_time)
     expect(total).to eql (18 * 1)
   end
 end
