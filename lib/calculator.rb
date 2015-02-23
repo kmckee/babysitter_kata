@@ -1,5 +1,5 @@
 class Calculator
-  attr_accessor :bedtime, :rate_before_bedtime
+  attr_accessor :bedtime, :rate_before_bedtime, :rate_after_bedtime
   def initialize(hours_calculator = nil)
     @hours_calculator = hours_calculator || HoursWorkedCalculator.new
   end
