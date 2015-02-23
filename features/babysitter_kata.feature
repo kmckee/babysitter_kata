@@ -11,17 +11,17 @@ Feature: Babysitter Kata
     Given I am calculating my nightly babysitting charge
     And the child's bedtime is 9:00pm
 
-    @focus
   Scenario: One hour at the standard rate 
     Given the rate before bedtime is $12.00 per hour
     When I babysit from 5:00pm to 6:00pm
     Then I should bill $12.00 
-  
+
   Scenario: Multiple hours at the standard rate 
     Given the rate before bedtime is $12.00 per hour
     When I babysit from 5:00pm to 9:00pm
     Then I should bill $48.00 
 
+    @focus
   Scenario: One hour between bedtime and midnight
     Given the rate from bedtime to midnight is $8.00 per hour
     When I babysit from 9:00pm to 10:00pm
